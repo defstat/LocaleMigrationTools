@@ -1,5 +1,5 @@
 # USAGE
- Could call 
+ Could call for batch use
  
  > `./DriverScript.sh ./inputRepos.txt ./inputLocales.txt`
  
@@ -9,7 +9,7 @@
 
 There are such test files in the repo.
 
- Could call 
+ Could call for individual repo use
  
  > `./FinalLocaleMigration.sh ../ojs-3-dev-main es es_ES`
  
@@ -22,6 +22,7 @@ There are such test files in the repo.
  1. the "..@something" locale folders should be considered
  2. Perhaps add more locale_folders to consider other than the ones that start from the locale code (for example eu_ES could be considered if es locale is migrating)
  3. Other contents of the locale folders should be considered (.xml files, other folders like `images` folder (in `en_US`)) 
+ 4. Could add support for different default locale folder for different repo. 
 
  # Other Notes
 Should install **msgcat** 
