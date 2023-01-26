@@ -25,3 +25,8 @@ locale/en_US folder remained because of an "image" folder
  1. The first parameter is the repository pass
  2. The second parameter is the locale code we want to work on
  3. The third parameter is the default locale folder for the specified locale code
+
+ **PENDING ISSUES**
+ 1. the "..@something" locale folders should be considered
+ 2. Perhaps add more locale_folders to consider other than the ones that start from the locale code (for example eu_ES could be considered if es locale is migrating)
+ 3. Other contents of the locale folders should be considered (.xml files, other folders like `images` folder (in `en_US`)) 
