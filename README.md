@@ -1,11 +1,18 @@
 # USAGE
- Could call `./DriverScript.sh ./inputRepos.txt ./inputLocales.txt`
+ Could call 
+ 
+ > `./DriverScript.sh ./inputRepos.txt ./inputLocales.txt`
  
  At this case
  1. The `inputRepos.txt` should contain paths of the repositories that we need to migrate their locale
  2. The `inputLocales.txt` should contain rows like `es es_ES\nen en_US\nfr fr_FR`
 
- Could call `./FinalLocaleMigration.sh ../ojs-3-dev-main es es_ES`
+There are such test files in the repo.
+
+ Could call 
+ 
+ > `./FinalLocaleMigration.sh ../ojs-3-dev-main es es_ES`
+ 
  Where
  1. The first parameter is the repository pass
  2. The second parameter is the locale code we want to work on
