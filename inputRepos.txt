@@ -1,0 +1,2 @@
+../ojs-3-dev-main
+../ojs-3-dev-main/lib/pkp
