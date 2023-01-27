@@ -36,8 +36,8 @@ locale/en_US folder remained because of an "image" folder
 
 ../MyWork/ojs-3-dev-main/lib/pkp/locale/pl_PL/common.po:2176: duplicate message definition...
 
- find ../MyWork/ojs-3-dev-main/lib/pkp/locale -mindepth 1 -type d -empty -delete
+ > `find ../MyWork/ojs-3-dev-main/lib/pkp/locale -mindepth 1 -type d -empty -delete`
 
- find ../ojs-3-dev-main -type d -name "es_*" -o -name "es" -exec sh -c 'find "$0" -name "*.po" -print' {} \; | grep -E "es" | sort | uniq
+ > `find ../ojs-3-dev-main -type d -name "es_*" -o -name "es" -exec sh -c 'find "$0" -name "*.po" -print' {} \; | grep -E "es" | sort | uniq`
 
  
