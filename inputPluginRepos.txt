@@ -1,0 +1,17 @@
+../ojs-3-dev-main/plugins/blocks/browse
+../ojs-3-dev-main/plugins/blocks/makeSubmission
+../ojs-3-dev-main/plugins/generic/acron
+../ojs-3-dev-main/plugins/generic/citationStyleLanguage
+../ojs-3-dev-main/plugins/generic/crossref
+../ojs-3-dev-main/plugins/generic/customBlockManager
+../ojs-3-dev-main/plugins/generic/googleAnalytics
+../ojs-3-dev-main/plugins/generic/googleScholar
+../ojs-3-dev-main/plugins/generic/lensGalley
+../ojs-3-dev-main/plugins/generic/orcidProfile
+../ojs-3-dev-main/plugins/generic/pdfJsViewer
+../ojs-3-dev-main/plugins/generic/staticPages
+../ojs-3-dev-main/plugins/generic/tinymce
+../ojs-3-dev-main/plugins/generic/usageStats
+../ojs-3-dev-main/plugins/importexport/medra
+../ojs-3-dev-main/plugins/importexport/quickSubmit
+../ojs-3-dev-main/plugins/reports/reviewReport

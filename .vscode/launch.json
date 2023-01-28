@@ -10,8 +10,8 @@
             "name": "Bash-Debug (simplest configuration)",
             "program": "${file}",
             // "args": ["../Locales_Test", "es", "es_ES"],
-            // "args": ["../ojs-3-dev-main", "es", "es_ES"],
-            "args": ["./inputRepos.txt", "./inputLocales.txt"],
+            "args": ["../ojs-3-dev-main", "en", "en_US"],
+            // "args": ["./inputRepos.txt", "./inputLocales.txt"],
         }
     ]
 }

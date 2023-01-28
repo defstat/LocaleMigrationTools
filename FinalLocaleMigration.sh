@@ -25,6 +25,11 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
     fi
 
     if [ "${#folder_filenames[@]}" -gt 1 ]; then
+      for folder_filename in "${folder_filenames[@]}"; do
+        echo "msguniq --use-first $folder_filename -o $folder_filename"
+        msguniq --use-first $folder_filename -o $folder_filename
+      done
+
       default_file_name="$folder_to_attach/$default_locale_folder/$file_filename"
       if [[ " ${folder_filenames[@]} " =~ " ${default_file_name} " ]]; then
         # Remove the filename from the array
@@ -48,6 +53,15 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
     fi
   done
 
-  echo "find "$repo_folder/$root_parent_folder" -mindepth 1 -type d -empty -delete"
-  find "$repo_folder/$root_parent_folder" -mindepth 1 -type d -empty -delete
+  echo "find "$repo_folder/$root_parent_folder" -mindepth 1 -type d -name "$base_locale"_* -empty -delete"
+  find "$repo_folder/$root_parent_folder" -mindepth 1 -type d -name "$base_locale"_* -empty -delete
+
+  # Search for non empty locale folders and move the contents to the base locale folder
+  
+  # echo "find "$repo_folder/$root_parent_folder" -type d -name "$base_locale"_*"
+  # remaining_locale_folders=$(find "$repo_folder/$root_parent_folder" -type d -name "$base_locale"_*)
+  # for remaining_locale_folder in "${remaining_locale_folders[@]}"; do
+  #   echo "mv $remaining_locale_folder/* $repo_folder/$root_parent_folder/$base_locale"
+  #   mv "$remaining_locale_folder/*" "$repo_folder/$root_parent_folder/$base_locale"
+  # done
 done
