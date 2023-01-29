@@ -1,3 +1,4 @@
 es es_ES
 en en_US
 fr fr_CA
+sr sr_RS

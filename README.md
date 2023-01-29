@@ -40,4 +40,5 @@ locale/en_US folder remained because of an "image" folder
 
  > `find ../ojs-3-dev-main -type d -name "es_*" -o -name "es" -exec sh -c 'find "$0" -name "*.po" -print' {} \; | grep -E "es" | sort | uniq`
 
- 
+**Check Existing Locale keys from code**
+> grep -rhoE "__\('([^']*)'" ./ | sed "s/__('\|')//g" | sed "s/'//g" | sort | uniq
