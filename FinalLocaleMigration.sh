@@ -84,14 +84,23 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
                 echo "msgcat --use-first $default_at_file_name ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename""
                 msgcat --use-first $default_at_file_name ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename"
 
+                echo "git add "$base_locale_at_folder/$file_filename""
+                git add "$base_locale_at_folder/$file_filename"
+
                 # Remove the default locale folder filename (the others will be removed afterwards)
                 echo "rm $default_at_file_name"
                 rm $default_at_file_name
+
+                echo "git add -u $default_at_file_name"
+                git add -u $default_at_file_name
               else
                 # If it is not in just call the msgcat, no matter the .po files order order
                 # the output (locale merged) file will go right in the base locale folder
                 echo "msgcat --use-first ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename""
                 msgcat --use-first ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename"
+
+                echo "git add "$base_locale_at_folder/$file_filename""
+                git add "$base_locale_at_folder/$file_filename"
               fi
 
               # Finally remove all the .po files that we have just merged.
@@ -104,6 +113,12 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
               # ... just move it in the base locale folder
               echo "mv $at_only_file "$base_locale_at_folder/$file_filename""
               mv $at_only_file "$base_locale_at_folder/$file_filename"
+
+              echo "git add "$base_locale_at_folder/$file_filename""
+              git add "$base_locale_at_folder/$file_filename"
+
+              echo "git add -u $at_only_file"
+              git add -u $at_only_file
             fi
           fi
         done
@@ -141,19 +156,31 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
           echo "msgcat --use-first $default_file_name ${folder_filenames[@]} -o "$base_locale_folder/$file_filename""
           msgcat --use-first $default_file_name ${folder_filenames[@]} -o "$base_locale_folder/$file_filename"
 
+          echo "git add "$base_locale_folder/$file_filename""
+          git add "$base_locale_folder/$file_filename"
+
           # Remove the default locale folder filename (the others will be removed afterwards)
           echo "rm $default_file_name"
           rm $default_file_name
+
+          echo "git add -u $default_file_name"
+          git add -u $default_file_name
         else
           # If it is not in just call the msgcat, no matter the .po files order order
           # the output (locale merged) file will go right in the base locale folder
           echo "msgcat --use-first ${folder_filenames[@]} -o "$base_locale_folder/$file_filename""
           msgcat --use-first ${folder_filenames[@]} -o "$base_locale_folder/$file_filename"
+
+          echo "git add "$base_locale_folder/$file_filename""
+          git add "$base_locale_folder/$file_filename"
         fi
 
         # Finally remove all the .po files that we have just merged.
         echo "rm ${folder_filenames[@]}"
         rm ${folder_filenames[@]}
+
+        echo "git add -u ${folder_filenames[@]}"
+        git add -u ${folder_filenames[@]}
       else
         # if there is only one .po files that are contained to a locale folder with the specified locale code ...
         only_file=${folder_filenames[0]}
@@ -161,6 +188,12 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
         # ... just move it in the base locale folder
         echo "mv $only_file "$base_locale_folder/$file_filename""
         mv $only_file "$base_locale_folder/$file_filename"
+
+        echo "git add "$base_locale_folder/$file_filename""
+        git add "$base_locale_folder/$file_filename"
+
+        echo "git add -u $only_file"
+        git add -u $only_file
       fi
     fi
   done
@@ -177,10 +210,15 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
       echo "mv $actual_finale_action_folder_path "$repo_folder/$root_parent_folder/$base_locale/depr_$finale_action_folder_name"_depr"
       mv $actual_finale_action_folder_path "$repo_folder/$root_parent_folder/$base_locale/depr_$finale_action_folder_name"_depr
       
+      echo "git add "$repo_folder/$root_parent_folder/$base_locale/depr_$finale_action_folder_name"_depr"
+      git add "$repo_folder/$root_parent_folder/$base_locale/depr_$finale_action_folder_name"_depr
     else
       # Actions id the folder is empty
       echo "rm -r $actual_finale_action_folder_path"
       rm -r $actual_finale_action_folder_path
+
+      echo "git add -u ${folder_filenames[@]}"
+      git add -u ${folder_filenames[@]}
     fi
   done
 
@@ -204,6 +242,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
         # Actions id the folder is empty
         echo "rm -r $at_actual_finale_action_folder_path"
         rm -r $at_actual_finale_action_folder_path
+
+        echo "git add -u $at_actual_finale_action_folder_path"
+        git add -u $at_actual_finale_action_folder_path
       fi
     done
   fi
