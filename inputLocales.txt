@@ -1,6 +1,5 @@
 es es_ES
 en en_US
-fr fr_CA
 sr sr_RS
 el el_GR
 de de_DE
@@ -51,3 +50,4 @@ uz uz_UZ
 vi vi_VN
 zh zh_CN
 eu eu_ES
+sw sw_KE
