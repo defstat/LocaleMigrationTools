@@ -217,8 +217,8 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
       echo "rm -r $actual_finale_action_folder_path"
       rm -r $actual_finale_action_folder_path
 
-      echo "git add -u ${folder_filenames[@]}"
-      git add -u ${folder_filenames[@]}
+      echo "git add -u $actual_finale_action_folder_path"
+      git add -u $actual_finale_action_folder_path
     fi
   done
 

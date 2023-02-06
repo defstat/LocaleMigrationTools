@@ -1,53 +1,52 @@
-es es_ES
-en en_US
-sr sr_RS
-el el_GR
-de de_DE
-da da_DK
-cs cs_CZ
-ca ca_ES
-bs bs_BA
-bg bg_BG
-be be_BY
-az az_AZ
-ar ar_IQ
-fa fa_IR
-fi fi_FI
-gd gd_GB
-gl gl_ES
-he he_IL
-hi hi_IN
-hr hr_HR
-hu hu_HU
-hy hy_AM
-id id_ID
-is is_IS
-it it_IT
-ja ja_JP
-ka ka_GE
-kk kk_KZ
-ko ko_KR
-ku ku_IQ
-lt lt_LT
-lv lv_LV
-mk mk_MK
-mn mn_MN
-ms ms_MY
-nb nb_NO
-nl nl_NL
-pl pl_PL
-pt pt_PT
-ro ro_RO
-ru ru_RU
-si si_LK
-sk sk_SK
-sl sl_SI
-sv sv_SE
-tr tr_TR
-uk uk_UA
-ur ur_PK
-uz uz_UZ
-vi vi_VN
-zh zh_CN
-eu eu_ES
-sw sw_KE
+-s es -d es_ES
+-s en -d en_US
+-s sr -d sr_RS
+-s el -d el_GR
+-s de -d de_DE
+-s da -d da_DK
+-s cs -d cs_CZ
+-s ca -d ca_ES
+-s bs -d bs_BA
+-s bg -d bg_BG
+-s be -d be_BY
+-s az -d az_AZ
+-s ar -d ar_IQ
+-s fa -d fa_IR
+-s fi -d fi_FI
+-s gd -d gd_GB
+-s gl -d gl_ES
+-s he -d he_IL
+-s hi -d hi_IN
+-s hr -d hr_HR
+-s hu -d hu_HU
+-s hy -d hy_AM
+-s id -d id_ID
+-s is -d is_IS
+-s it -d it_IT
+-s ja -d ja_JP
+-s ka -d ka_GE
+-s kk -d kk_KZ
+-s ko -d ko_KR
+-s ku -d ku_IQ
+-s lt -d lt_LT
+-s lv -d lv_LV
+-s mk -d mk_MK
+-s mn -d mn_MN
+-s ms -d ms_MY
+-s nb -d nb_NO
+-s nl -d nl_NL
+-s pl -d pl_PL
+-s ro -d ro_RO
+-s ru -d ru_RU
+-s si -d si_LK
+-s sk -d sk_SK
+-s sl -d sl_SI
+-s sv -d sv_SE
+-s tr -d tr_TR
+-s uk -d uk_UA
+-s ur -d ur_PK
+-s uz -d uz_UZ
+-s vi -d vi_VN
+-s eu -d eu_ES
+-s sw -d sw_KE
+-l zh_Hant zh_TW
