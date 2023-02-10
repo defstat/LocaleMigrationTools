@@ -5,6 +5,11 @@ PATH=$PATH:/usr/bin
 repo_folder=$1
 locale_folder_names=()
 
+currect_working_folder="$PWD"
+
+echo "cd $repo_folder"
+cd $repo_folder
+
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -23,11 +28,11 @@ echo $k
 default_locale_folder=${locale_folder_names[0]}
 
 # Get all the folder names that actually contain any .po files, and list their parent's parent folder.
-echo "git -C $repo_folder ls-files --full-name | grep -E '($k)/[^/]+\.po$' | xargs dirname | xargs -n 1 dirname | sort | uniq"
-root_parent_folders=($(git -C $repo_folder ls-files --full-name | grep -E "($k)/[^/]+\.po$" | xargs dirname | xargs -n 1 dirname | sort | uniq))
+echo "git -C . ls-files --full-name | grep -E '($k)/[^/]+\.po$' | xargs dirname | xargs -n 1 dirname | sort | uniq"
+root_parent_folders=($(git -C . ls-files --full-name | grep -E "($k)/[^/]+\.po$" | xargs dirname | xargs -n 1 dirname | sort | uniq))
 
 for root_parent_folder in "${root_parent_folders[@]}"; do
-  actual_root_locale_folder_path="$repo_folder/$root_parent_folder"
+  actual_root_locale_folder_path="./$root_parent_folder"
 
   # Check if that folder actually exists
   if [ ! -d "$actual_root_locale_folder_path" ]; then
@@ -40,7 +45,7 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
   file_filenames=($(git -C $actual_root_locale_folder_path ls-files | grep -E "($k)/[^/]+\.po$" | xargs -n 1  basename | sort | uniq))
 
   for file_filename in "${file_filenames[@]}"; do
-    folder_to_attach="$repo_folder/$root_parent_folder/"
+    folder_to_attach="./$root_parent_folder/"
 
     # Get all the .po files filenames that are contained to a locale folder with the specified locale code, and add the relative folder path to that.
     folder_filenames=($(git -C $actual_root_locale_folder_path ls-files | grep -E "($k)/$file_filename" | grep -v @ | xargs -I {} echo "${folder_to_attach}{}" | sort | uniq))
@@ -104,18 +109,24 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
     if [ -n "$(ls -A "$actual_finale_action_folder_path")" ]; then
       # Actions if the folder is not empty
       finale_action_folder_name=($(basename ${actual_finale_action_folder_path}))
-      echo "mv $actual_finale_action_folder_path "$repo_folder/$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr"
-      mv $actual_finale_action_folder_path "$repo_folder/$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr
+      echo "mv $actual_finale_action_folder_path "./$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr"
+      mv $actual_finale_action_folder_path "./$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr
       
-      echo "git add "$repo_folder/$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr"
-      git add "$repo_folder/$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr
+      echo "git add "./$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr"
+      git add "./$root_parent_folder/$default_locale_folder/depr_$finale_action_folder_name"_depr
+
+      echo "git rm -r $actual_finale_action_folder_path"
+      git rm -r $actual_finale_action_folder_path
     else
       # Actions id the folder is empty
       echo "rm -r $actual_finale_action_folder_path"
       rm -r $actual_finale_action_folder_path
 
-      echo "git add -u $actual_finale_action_folder_path"
-      git add -u $actual_finale_action_folder_path
+      # echo "git add -u $actual_finale_action_folder_path"
+      # git add -u $actual_finale_action_folder_path
     fi
   done
 done
+
+echo "cd $currect_working_folder"
+cd $currect_working_folder

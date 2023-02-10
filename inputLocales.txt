@@ -49,4 +49,3 @@
 -s vi -d vi_VN
 -s eu -d eu_ES
 -s sw -d sw_KE
--l zh_Hant zh_TW

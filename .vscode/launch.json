@@ -11,10 +11,12 @@
             "program": "${file}",
             // "args": ["../Locales_Test", "es", "es_ES"],
             // "args": ["../ojs-3-dev-main", "en", "en_US"],
-            "args": ["./inputRepos.txt", "./inputLocales.txt"],
+            // "args": ["./inputRepos.txt", "./inputLocales.txt"],
             // "args": ["../ojs-3-dev-main", "sr", "sr_RS"],
             // "args": ["../ojs-3-dev-main", "-s", "sr", "-l", "sr_RS", "sr_RS2", "sr_RS3"],
             // "args": ["../ojs-3-dev-main", "-l", "zh_Hant", "zh_TW"],
+            // "args": ["../ojs-3-dev-main/plugins", "./pluginRepos.txt"],
+            "args": ["../ojs-3-dev-main/plugins/generic/staticPages", "en", "en_US"],
         }
     ]
 }

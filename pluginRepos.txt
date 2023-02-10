@@ -2,7 +2,7 @@ generic plagiarism https://github.com/pkp/plagiarism
 generic paperbuzz https://github.com/pkp/paperbuzz
 generic pln https://github.com/pkp/pln
 viewableFiles pdfJsViewer https://github.com/pkp/pdfJsViewer
-importexport crossref https://github.com/pkp/crossref-ojs
+generic crossref https://github.com/pkp/crossref-ojs
 oaiMetadataFormats oaijats https://github.com/pkp/oaiJats
 blocks makesubmission https://github.com/pkp/makeSubmission
 importexport medra https://github.com/pkp/medra

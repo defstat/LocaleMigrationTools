@@ -20,10 +20,8 @@ readarray -t locale_params < "$(echo "$input_locale_params" | tr -d '\r\n')"
 current_dir=$(pwd)
 
 for repo in "${repos[@]}"; do
-  cd $repo
   for locale_param in "${locale_params[@]}"; do
-    echo "/bin/bash $current_dir/FinalLocaleMigrationWithOptions.sh $current_dir ./ $locale_param"
-    /bin/bash "$current_dir/FinalLocaleMigrationWithOptions.sh" $current_dir ./ $locale_param
+    echo "/bin/bash $current_dir/FinalLocaleMigrationWithOptions.sh $current_dir $repo $locale_param"
+    /bin/bash "$current_dir/FinalLocaleMigrationWithOptions.sh" $current_dir $repo $locale_param
   done
-  cd $current_dir
 done
