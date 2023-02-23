@@ -71,10 +71,10 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
 
             if [ "${#specific_folder_with_at_filenames[@]}" -gt 1 ]; then
               # Make sure that there are no dublicate translation keys in each .po file - remove them if there are
-              for specific_folder_with_at_filename in "${specific_folder_with_at_filenames[@]}"; do
-                echo "msguniq --use-first $specific_folder_with_at_filename -o $specific_folder_with_at_filename"
-                msguniq --use-first $specific_folder_with_at_filename -o $specific_folder_with_at_filename
-              done
+              # for specific_folder_with_at_filename in "${specific_folder_with_at_filenames[@]}"; do
+              #   echo "msguniq --use-first $specific_folder_with_at_filename -o $specific_folder_with_at_filename"
+              #   msguniq --use-first $specific_folder_with_at_filename -o $specific_folder_with_at_filename
+              # done
 
               # Declare the path that it would be the .po file name path in the default locale folder, which is declared as an input param ...
               default_at_file_name="$folder_to_attach/$default_locale_folder@$at_string/$file_filename"
@@ -88,6 +88,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
                 # the output (locale merged) file will go right in the base locale folder
                 echo "msgcat --use-first $default_at_file_name ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename""
                 msgcat --use-first $default_at_file_name ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename"
+
+                echo "dos2unix "$base_locale_at_folder/$file_filename""
+                dos2unix "$base_locale_at_folder/$file_filename"
 
                 echo "git add "$base_locale_at_folder/$file_filename""
                 git add "$base_locale_at_folder/$file_filename"
@@ -103,6 +106,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
                 # the output (locale merged) file will go right in the base locale folder
                 echo "msgcat --use-first ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename""
                 msgcat --use-first ${specific_folder_with_at_filenames[@]} -o "$base_locale_at_folder/$file_filename"
+
+                echo "dos2unix "$base_locale_at_folder/$file_filename""
+                dos2unix "$base_locale_at_folder/$file_filename"
 
                 echo "git add "$base_locale_at_folder/$file_filename""
                 git add "$base_locale_at_folder/$file_filename"
@@ -143,10 +149,10 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
       # if there are more than one .po files that are contained to a locale folder with the specified locale code
       if [ "${#folder_filenames[@]}" -gt 1 ]; then
         # Make sure that there are no dublicate translation keys in each .po file - remove them if there are
-        for folder_filename in "${folder_filenames[@]}"; do
-          echo "msguniq --use-first $folder_filename -o $folder_filename"
-          msguniq --use-first $folder_filename -o $folder_filename
-        done
+        # for folder_filename in "${folder_filenames[@]}"; do
+        #   echo "msguniq --use-first $folder_filename -o $folder_filename"
+        #   msguniq --use-first $folder_filename -o $folder_filename
+        # done
 
         # Declare the path that it would be the .po file name path in the default locale folder, which is declared as an input param ...
         default_file_name="$folder_to_attach/$default_locale_folder/$file_filename"
@@ -160,6 +166,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
           # the output (locale merged) file will go right in the base locale folder
           echo "msgcat --use-first $default_file_name ${folder_filenames[@]} -o "$base_locale_folder/$file_filename""
           msgcat --use-first $default_file_name ${folder_filenames[@]} -o "$base_locale_folder/$file_filename"
+
+          echo "dos2unix "$base_locale_folder/$file_filename""
+          dos2unix "$base_locale_folder/$file_filename"
 
           echo "git add "$base_locale_folder/$file_filename""
           git add "$base_locale_folder/$file_filename"
@@ -175,6 +184,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
           # the output (locale merged) file will go right in the base locale folder
           echo "msgcat --use-first ${folder_filenames[@]} -o "$base_locale_folder/$file_filename""
           msgcat --use-first ${folder_filenames[@]} -o "$base_locale_folder/$file_filename"
+
+          echo "dos2unix "$base_locale_folder/$file_filename""
+          dos2unix "$base_locale_folder/$file_filename"
 
           echo "git add "$base_locale_folder/$file_filename""
           git add "$base_locale_folder/$file_filename"

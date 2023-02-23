@@ -45,26 +45,34 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
   file_filenames=($(git -C $actual_root_locale_folder_path ls-files | grep -E "($k)/[^/]+\.po$" | xargs -n 1  basename | sort | uniq))
 
   for file_filename in "${file_filenames[@]}"; do
-    folder_to_attach="./$root_parent_folder/"
+    folder_to_attach="./$root_parent_folder"
 
     # Get all the .po files filenames that are contained to a locale folder with the specified locale code, and add the relative folder path to that.
-    folder_filenames=($(git -C $actual_root_locale_folder_path ls-files | grep -E "($k)/$file_filename" | grep -v @ | xargs -I {} echo "${folder_to_attach}{}" | sort | uniq))
+    folder_filenames=($(git -C $actual_root_locale_folder_path ls-files | grep -E "($k)/$file_filename" | grep -v @ | xargs -I {} echo "${folder_to_attach}/{}" | sort | uniq))
 
     # Declare the path that it would be the .po file name path in the default locale folder, which is declared as an input param ...
-    default_file_name="$folder_to_attach/$default_locale_folder/$file_filename"
+    default_folder_name="$folder_to_attach/$default_locale_folder"
+    default_file_name="$default_folder_name/$file_filename"
 
     if [ "${#folder_filenames[@]}" -gt 0 ]; then
+      if [ ! -d "$default_folder_name" ]; then
+          echo "mkdir "$default_folder_name""
+          mkdir "$default_folder_name"
+      fi
       
       # if there are more than one .po files that are contained to a locale folder with the specified locale code
       if [ "${#folder_filenames[@]}" -gt 1 ]; then
         # Make sure that there are no dublicate translation keys in each .po file - remove them if there are
-        for folder_filename in "${folder_filenames[@]}"; do
-          echo "msguniq --use-first $folder_filename -o $folder_filename"
-          msguniq --use-first $folder_filename -o $folder_filename
-        done
+        # for folder_filename in "${folder_filenames[@]}"; do
+        #   echo "msguniq --use-first $folder_filename -o $folder_filename"
+        #   msguniq --use-first $folder_filename -o $folder_filename
+        # done
 
         echo "msgcat --use-first ${folder_filenames[@]} -o "$default_file_name""
         msgcat --use-first ${folder_filenames[@]} -o "$default_file_name"
+
+        echo "dos2unix $default_file_name"
+        dos2unix $default_file_name
 
         echo "git add "$default_file_name""
         git add "$default_file_name"
@@ -86,6 +94,9 @@ for root_parent_folder in "${root_parent_folders[@]}"; do
         # ... just move it in the base locale folder
         echo "mv $only_file "$default_file_name""
         mv $only_file "$default_file_name"
+
+        echo "dos2unix $default_file_name"
+        dos2unix $default_file_name
 
         echo "git add "$default_file_name""
         git add "$default_file_name"
