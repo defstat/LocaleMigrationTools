@@ -42,3 +42,6 @@ locale/en_US folder remained because of an "image" folder
 
 **Check Existing Locale keys from code**
 > grep -rhoE "__\('([^']*)'" ./ | sed "s/__('\|')//g" | sed "s/'//g" | sort | uniq
+
+ # PLUGIN LOCALE MIGRATION
+ 1. 
